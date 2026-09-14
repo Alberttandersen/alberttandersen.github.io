@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albert Andersen_Portfolio_Academy</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons (Loaded with fallback) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       EDITORIAL PRINT & PDF PORTFOLIO STYLESHEET
+       Target: A4 Standard (210mm x 297mm)
+       Author: Albert Andersen
+       Theme: Interdisciplinary Potential (Quantum Physics + HPC + Fullstack Web)
+       ========================================================================== */
+
+    :root {
+      --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+      --color-primary: #0f172a;       /* Deep Slate */
+      --color-secondary: #1e293b;     /* Slate 800 */
+      --color-text-main: #1e293b;     /* High Contrast Charcoal */
+      --color-text-muted: #475569;    /* Slate 600 */
+      --color-text-dim: #64748b;      /* Slate 500 */
+      
+      --color-accent-blue: #0284c7;   /* Sky Blue / Tech */
+      --color-accent-blue-bg: #f0f9ff;
+      --color-accent-indigo: #4338ca; /* Indigo / Software */
+      --color-accent-indigo-bg: #eef2ff;
+      --color-accent-emerald: #047857;/* Emerald / Impact */
+      --color-accent-emerald-bg: #ecfdf5;
+      --color-accent-amber: #b45309;  /* Amber / Physics */
+      --color-accent-amber-bg: #fffbeb;
+
+      --border-subtle: #cbd5e1;       /* Slate 300 for crisp print */
+      --border-light: #e2e8f0;        /* Slate 200 */
+      --bg-card: #f8fafc;             /* Slate 50 */
+      --bg-white: #ffffff;
+    }
+
+    /* CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text-main);
+      background-color: #cbd5e1;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Screen-Only Floating Action Bar */
+    .screen-toolbar {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 9999;
+      background: #0f172a;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .screen-toolbar span {
+      color: #94a3b8;
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+    .print-btn {
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .print-btn:hover {
+      background: #0369a1;
+    }
+
+    /* ==========================================================================
+       A4 PAGE CONTAINER (Strict 210mm x 297mm)
+       ========================================================================== */
+    .a4-page {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      margin: 24px auto;
+      background: var(--bg-white);
+      padding: 12mm 15mm 10mm 15mm;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Top Color Bar */
+    .page-accent-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4.5mm;
+      background: linear-gradient(90deg, #0284c7 0%, #4338ca 45%, #059669 80%, #d97706 100%);
+    }
+
+    /* Page Header Section */
+    .doc-header {
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--border-subtle);
+    }
+    .header-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .name-block h1 {
+      font-family: var(--font-heading);
+      font-size: 26pt;
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .name-block .candidate-title {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: var(--color-accent-blue);
+      font-family: var(--font-heading);
+      letter-spacing: 0.02em;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-academy {
+      background: #f1f5f9;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 5px 10px;
+      text-align: right;
+    }
+    .badge-academy .tag {
+      font-size: 7.5pt;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--color-accent-indigo);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge-academy .sub {
+      font-size: 7pt;
+      color: var(--color-text-dim);
+      margin-top: 1px;
+    }
+
+    /* Contact Row */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 8px;
+      font-size: 8pt;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+    }
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .contact-item a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+    .contact-item i {
+      color: var(--color-accent-blue);
+      font-size: 8.5pt;
+    }
+
+    /* Interdisciplinary Potential Highlight Card */
+    .interdisciplinary-pill-box {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid var(--border-subtle);
+      border-left: 3.5px solid var(--color-accent-blue);
+      border-radius: 6px;
+      padding: 9px 12px;
+    }
+    .pill-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .pill-box-title {
+      font-size: 7.5pt;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--color-accent-blue);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .pillars-tags {
+      display: flex;
+      gap: 6px;
+    }
+    .pillar-tag {
+      font-size: 7pt;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+    }
+    .tag-quantum { background: var(--color-accent-amber-bg); color: var(--color-accent-amber); border: 1px solid #fde68a; }
+    .tag-hpc { background: var(--color-accent-blue-bg); color: var(--color-accent-blue); border: 1px solid #bae6fd; }
+    .tag-web { background: var(--color-accent-indigo-bg); color: var(--color-accent-indigo); border: 1px solid #c7d2fe; }
+
+    .bio-text {
+      font-size: 8.8pt;
+      line-height: 1.48;
+      color: var(--color-text-main);
+      font-style: italic;
+    }
+
+    /* Project Section Styles */
+    .project-section {
+      margin-top: 11px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px 14px;
+      position: relative;
+    }
+    .project-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      border-bottom: 1px dashed var(--border-light);
+      padding-bottom: 6px;
+    }
+    .project-num-badge {
+      font-size: 7pt;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--color-primary);
+      padding: 2px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+    .project-title {
+      font-family: var(--font-heading);
+      font-size: 13.5pt;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 7.5pt;
+    }
+    .meta-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 2px 6px;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .meta-pill strong {
+      color: var(--color-text-main);
+      font-weight: 600;
+    }
+    .meta-live-link {
+      background: var(--color-accent-blue-bg);
+      border: 1px solid #bae6fd;
+      color: var(--color-accent-blue);
+      font-weight: 600;
+    }
+
+    /* Summary Box */
+    .summary-box {
+      font-size: 8.5pt;
+      line-height: 1.42;
+      color: var(--color-text-main);
+      margin: 7px 0;
+    }
+
+    /* Impact & Learnings Grid */
+    .impact-learnings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin: 7px 0;
+    }
+    .spec-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 7px 9px;
+      font-size: 7.8pt;
+      line-height: 1.4;
+    }
+    .spec-card-header {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .spec-card.impact {
+      border-left: 3px solid var(--color-accent-emerald);
+    }
+    .spec-card.impact .spec-card-header {
+      color: var(--color-accent-emerald);
+    }
+    .spec-card.learnings {
+      border-left: 3px solid var(--color-accent-indigo);
+    }
+    .spec-card.learnings .spec-card-header {
+      color: var(--color-accent-indigo);
+    }
+
+    /* Real UI Screenshot Dual Showcase */
+    .screenshots-container {
+      margin-top: 8px;
+    }
+    .screenshots-title {
+      font-size: 7pt;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-dim);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .screenshots-title span.badge-real {
+      color: var(--color-accent-emerald);
+      background: var(--color-accent-emerald-bg);
+      border: 1px solid #a7f3d0;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 6.5pt;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .screenshot-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      background: #ffffff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .browser-bar {
+      background: #0f172a;
+      padding: 3px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1e293b;
+    }
+    .browser-dots {
+      display: flex;
+      gap: 3px;
+    }
+    .browser-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #64748b;
+    }
+    .browser-url {
+      font-family: var(--font-mono);
+      font-size: 6pt;
+      color: #94a3b8;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 80%;
+    }
+    .screenshot-img-wrap {
+      width: 100%;
+      height: 45mm;
+      overflow: hidden;
+      background: #f1f5f9;
+      position: relative;
+    }
+    .screenshot-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .screenshot-caption {
+      font-size: 6.5pt;
+      font-family: var(--font-mono);
+      color: var(--color-text-dim);
+      background: #ffffff;
+      padding: 3px 6px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Page Footer */
+    .page-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7pt;
+      font-family: var(--font-mono);
+      color: var(--color-text-dim);
+      margin-top: auto;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-divider {
+      color: var(--border-subtle);
+    }
+    .footer-right {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    /* ==========================================================================
+       PAGE 2 SPECIFIC: Interdisciplinary Synthesis Section
+       ========================================================================== */
+    .page2-header-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 7px;
+      border-bottom: 1.5px solid var(--border-subtle);
+      margin-bottom: 10px;
+    }
+    .strip-title {
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+    }
+    .strip-subtitle {
+      font-size: 7.5pt;
+      font-family: var(--font-mono);
+      color: var(--color-accent-blue);
+      font-weight: 600;
+    }
+
+    .synthesis-section {
+      margin-top: 10px;
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .synthesis-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-heading);
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .synthesis-header i {
+      color: var(--color-accent-amber);
+    }
+    .synthesis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .synthesis-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .synthesis-card-title {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .synthesis-card p {
+      font-size: 7.2pt;
+      line-height: 1.35;
+      color: var(--color-text-muted);
+    }
+
+    .candidate-statement-box {
+      margin-top: 8px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 3.5px solid var(--color-accent-indigo);
+      border-radius: 5px;
+      padding: 7px 10px;
+      font-size: 7.6pt;
+      line-height: 1.4;
+      color: var(--color-text-main);
+    }
+    .candidate-statement-box strong {
+      color: var(--color-accent-indigo);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-size: 6.8pt;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Verification Badge Bar */
+    .verification-bar {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 7pt;
+      font-family: var(--font-mono);
+    }
+    .verification-bar a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       PRINT MEDIA QUERY (STRICT ZERO MARGIN, NO PAGE BLEED)
+       ========================================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .screen-toolbar {
+        display: none !important;
+      }
+      .a4-page {
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        overflow: hidden !important;
+      }
+      .a4-page:last-of-type {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Helper: Instant Print Button (Hidden on Print) -->
+  <aside class="screen-toolbar no-print">
+    <span>A4 Editorial Preview (2 Pages)</span>
+    <button class="print-btn" onclick="window.print()">
+      <i class="fa-solid fa-print"></i> Print / Export PDF
+    </button>
+  </aside>
+
+  <!-- ==========================================================================
+       PAGE 1: IDENTITY, MOTIVATION & PROJECT 1 (WISU VARIA)
+       ========================================================================== -->
+  <main class="a4-page" id="page-1">
+    
+    <!-- Top Geometric Accent Bar -->
+    <div class="page-accent-top"></div>
+
+    <!-- DOCUMENT HEADER -->
+    <header class="doc-header">
+      <div class="header-top-row">
+        <div class="name-block">
+          <h1>Albert Andersen</h1>
+          <div class="candidate-title">
+            <i class="fa-solid fa-atom"></i>
+            <span>Physicist | HPC System Administrator | Fullstack Developer</span>
+          </div>
+        </div>
+
+        <div class="badge-academy">
+          <div class="tag">Academy Portfolio</div>
+          <div class="sub">Technical Case Studies</div>
+        </div>
+      </div>
+
+      <!-- Contact & Profiles -->
+      <div class="contact-bar">
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>alberttandersen@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Jakarta / Depok, Indonesia</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-linkedin"></i>
+          <span>linkedin.com/in/alberttandersen</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-github"></i>
+          <span>github.com/alberttandersen</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-globe"></i>
+          <span>alberttandersen.github.io</span>
+        </div>
+      </div>
+
+      <!-- Interdisciplinary Highlight & Short Bio (Motivation) -->
+      <section class="interdisciplinary-pill-box" aria-label="Candidate Motivation">
+        <div class="pill-box-header">
+          <div class="pill-box-title">
+            <i class="fa-solid fa-dna"></i>
+            <span>Interdisciplinary Foundation & Motivation</span>
+          </div>
+          <div class="pillars-tags">
+            <span class="pillar-tag tag-quantum">Quantum Physics</span>
+            <span class="pillar-tag tag-hpc">HPC Supercomputing</span>
+            <span class="pillar-tag tag-web">Web Engineering</span>
+          </div>
+        </div>
+        <p class="bio-text">
+          "I bridge the gap between theoretical physics and applied technology. My journey spans researching quantum materials to architecting the High-Performance Computing clusters that make such research possible, and developing robust enterprise software. I am driven by the desire to build resilient infrastructures and innovative solutions that accelerate scientific and business advancements."
+        </p>
+      </section>
+    </header>
+
+    <!-- PROJECT 1: PT WISU VARIA ANALITIKA -->
+    <article class="project-section" aria-label="Project 1">
+      <div class="project-header-row">
+        <div>
+          <span class="project-num-badge">PROJECT // 01</span>
+          <h2 class="project-title">Enterprise B2B E-Catalog & Smart RFQ System</h2>
+          <div class="meta-badges">
+            <span class="meta-pill"><i class="fa-solid fa-building"></i> Context: <strong>Work assignment for PT Wisu Varia Analitika</strong></span>
+            <span class="meta-pill"><i class="fa-solid fa-user-gear"></i> Role: <strong>Individual (Fullstack Developer & IT Support)</strong></span>
+            <span class="meta-pill meta-live-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> <a href="https://wisuvar.com" target="_blank" style="color:inherit; text-decoration:none;">wisuvar.com</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <p class="summary-box">
+        <strong>Summary:</strong> Rebuilt a B2B e-catalog portal using Laravel 11 and Filament PHP, featuring an automated Smart Request for Quotation (RFQ) system and multi-language support.
+      </p>
+
+      <!-- Impact & Learnings Grid -->
+      <div class="impact-learnings-grid">
+        <div class="spec-card impact">
+          <div class="spec-card-header">
+            <i class="fa-solid fa-chart-line"></i> Measurable Impact
+          </div>
+          <p>
+            Accelerated client response times, blocked spam via SMTP Auto-Responder and IP Rate Limiting, and successfully recovered business email deliverability from spam boxes via strict DNS authentication (SPF, DKIM, DMARC).
+          </p>
+        </div>
+
+        <div class="spec-card learnings">
+          <div class="spec-card-header">
+            <i class="fa-solid fa-lightbulb"></i> Core Learnings
+          </div>
+          <p>
+            Mastered the integration of real-time VPS performance monitoring into web dashboards and learned how to align technical DevOps solutions directly with business automation and SEO goals.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real UI Screenshots (Wisu Varia Homepage & Product Catalog) -->
+      <div class="screenshots-container">
+        <div class="screenshots-title">
+          <span><i class="fa-solid fa-camera mr-1"></i> Authentic Production Interface</span>
+          <span class="badge-real"><i class="fa-solid fa-circle-check"></i> Live Production Deployment</span>
+        </div>
+        
+        <div class="screenshots-grid">
+          <!-- Screenshot 1: Homepage -->
+          <div class="screenshot-card">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              </div>
+              <div class="browser-url">https://wisuvar.com</div>
+            </div>
+            <div class="screenshot-img-wrap">
+              <img src="./assets/images/screenshot-wisuvar-home.png" alt="Wisu Varia Homepage Live Interface" loading="eager">
+            </div>
+            <div class="screenshot-caption">
+              <span>Homepage: Hero & Equipment Categories</span>
+              <span>1440x900 Capture</span>
+            </div>
+          </div>
+
+          <!-- Screenshot 2: Products Catalog -->
+          <div class="screenshot-card">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              </div>
+              <div class="browser-url">https://wisuvar.com/products</div>
+            </div>
+            <div class="screenshot-img-wrap">
+              <img src="./assets/images/screenshot-wisuvar-products.png" alt="Wisu Varia Product Catalog Live Interface" loading="eager">
+            </div>
+            <div class="screenshot-caption">
+              <span>Smart E-Catalog: Analytical Instruments & RFQ</span>
+              <span>Laravel 11 + Filament</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PAGE 1 FOOTER -->
+    <footer class="page-footer">
+      <div class="footer-left">
+        <span>Albert Andersen</span>
+        <span class="footer-divider">•</span>
+        <span>Academy Application Portfolio</span>
+        <span class="footer-divider">•</span>
+        <span>Universitas Indonesia (B.Sc Physics, GPA 3.51)</span>
+      </div>
+      <div class="footer-right">
+        Page 1 of 2
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==========================================================================
+       PAGE 2: PROJECT 2 (JUPYTERHUB & SSO) & INTERDISCIPLINARY SYNTHESIS
+       ========================================================================== -->
+  <main class="a4-page" id="page-2">
+    
+    <!-- Top Geometric Accent Bar -->
+    <div class="page-accent-top"></div>
+
+    <!-- PAGE 2 HEADER STRIP -->
+    <div class="page2-header-strip">
+      <div>
+        <h2 class="strip-title">Research Infrastructure & Identity Systems</h2>
+        <span class="strip-subtitle">CASE STUDY // 02 • HIGH-PERFORMANCE COMPUTING & CLOUD SERVICES</span>
+      </div>
+      <div class="badge-academy">
+        <div class="tag">PHOELabs & TCQM Lab</div>
+        <div class="sub">FMIPA Universitas Indonesia</div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: RESEARCH SERVICES: JUPYTERHUB & SSO -->
+    <article class="project-section" aria-label="Project 2" style="margin-top: 0;">
+      <div class="project-header-row">
+        <div>
+          <span class="project-num-badge" style="background: var(--color-accent-blue);">PROJECT // 02</span>
+          <h2 class="project-title">Centralized Research Web Services: JupyterHub & SSO</h2>
+          <div class="meta-badges">
+            <span class="meta-pill"><i class="fa-solid fa-flask-vial"></i> Context: <strong>Work assignment at PHOELabs & TCQM Lab</strong></span>
+            <span class="meta-pill"><i class="fa-solid fa-server"></i> Role: <strong>Individual (System Administrator)</strong></span>
+            <span class="meta-pill meta-live-link"><i class="fa-solid fa-link"></i> <a href="https://jhub.tcqmui.my.id/hub/login" target="_blank" style="color:inherit; text-decoration:none;">jhub.tcqmui.my.id</a></span>
+            <span class="meta-pill meta-live-link"><i class="fa-solid fa-shield-halved"></i> <a href="https://sso.tcqmui.my.id/if/flow/sso-tcqm-ui/" target="_blank" style="color:inherit; text-decoration:none;">sso.tcqmui.my.id</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <p class="summary-box">
+        <strong>Summary:</strong> Implemented and maintained remote access web services, including a centralized JupyterHub and a custom Single Sign-On (SSO) authentication flow for distributed user environments.
+      </p>
+
+      <!-- Impact & Learnings Grid -->
+      <div class="impact-learnings-grid">
+        <div class="spec-card impact">
+          <div class="spec-card-header">
+            <i class="fa-solid fa-chart-line"></i> Measurable Impact
+          </div>
+          <p>
+            Enabled secure, seamless remote access to lab computing resources, complete with NFS-based shared directories and custom access control, greatly improving operational flexibility for researchers.
+          </p>
+        </div>
+
+        <div class="spec-card learnings">
+          <div class="spec-card-header">
+            <i class="fa-solid fa-lightbulb"></i> Core Learnings
+          </div>
+          <p>
+            Gained hands-on expertise in deploying Nginx, configuring OAuth/OIDC protocols for SSO, and designing internal networks (multi-NIC, DHCP, multi-gateway routing) to connect master and compute nodes securely.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real UI Screenshots (TCQM JupyterHub & TCQM SSO) -->
+      <div class="screenshots-container">
+        <div class="screenshots-title">
+          <span><i class="fa-solid fa-camera mr-1"></i> Authentic Production Interface</span>
+          <span class="badge-real"><i class="fa-solid fa-circle-check"></i> Live Production Deployment</span>
+        </div>
+        
+        <div class="screenshots-grid">
+          <!-- Screenshot 1: JupyterHub Login -->
+          <div class="screenshot-card">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              </div>
+              <div class="browser-url">https://jhub.tcqmui.my.id/hub/login</div>
+            </div>
+            <div class="screenshot-img-wrap">
+              <img src="./assets/images/screenshot-tcqm-jhub.png" alt="TCQM Lab HPC JupyterHub Login Interface" loading="eager">
+            </div>
+            <div class="screenshot-caption">
+              <span>TCQM HPC JupyterHub Cloud Computing Portal</span>
+              <span>Slurm + Quantum ESPRESSO</span>
+            </div>
+          </div>
+
+          <!-- Screenshot 2: TCQM SSO Login -->
+          <div class="screenshot-card">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              </div>
+              <div class="browser-url">https://sso.tcqmui.my.id/if/flow/sso-tcqm-ui/</div>
+            </div>
+            <div class="screenshot-img-wrap">
+              <img src="./assets/images/screenshot-tcqm-sso.png" alt="TCQM Single Sign-On Authentik Login Interface" loading="eager">
+            </div>
+            <div class="screenshot-caption">
+              <span>Centralized Authentik SSO & Identity Gateway</span>
+              <span>OAuth2 / OIDC + OpenLDAP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- INTERDISCIPLINARY SYNTHESIS: ACADEMY PROGRAM VALUE -->
+    <section class="synthesis-section" aria-label="Interdisciplinary Value Proposition">
+      <div class="synthesis-header">
+        <i class="fa-solid fa-compass-drafting"></i>
+        <span>Interdisciplinary Value Proposition for Academy Program</span>
+      </div>
+
+      <div class="synthesis-grid">
+        <div class="synthesis-card">
+          <div class="synthesis-card-title">
+            <i class="fa-solid fa-atom" style="color: var(--color-accent-amber);"></i>
+            <span>Physics Rigor</span>
+          </div>
+          <p>
+            First-principles analytical problem formulation, statistical mechanics modeling, and deep mathematical grounding for complex systems.
+          </p>
+        </div>
+
+        <div class="synthesis-card">
+          <div class="synthesis-card-title">
+            <i class="fa-solid fa-server" style="color: var(--color-accent-blue);"></i>
+            <span>HPC Systems</span>
+          </div>
+          <p>
+            Hardware-level clustering, low-latency InfiniBand/RDMA fabric, Slurm partition orchestration, and bare-metal enterprise Linux administration.
+          </p>
+        </div>
+
+        <div class="synthesis-card">
+          <div class="synthesis-card-title">
+            <i class="fa-solid fa-code" style="color: var(--color-accent-indigo);"></i>
+            <span>Web Software</span>
+          </div>
+          <p>
+            End-to-end fullstack architecture (Laravel 11, Filament, Docker), REST/OIDC security, DNS deliverability, and automated business workflows.
+          </p>
+        </div>
+      </div>
+
+      <div class="candidate-statement-box">
+        <strong>Candidate Commitment & Academy Readiness</strong>
+        Albert Andersen brings a rare combination of scientific research discipline and hands-on systems implementation. Capable of translating abstract algorithmic and mathematical models into deployed, high-throughput web and computing environments with production-grade reliability.
+      </div>
+    </section>
+
+    <!-- Verification & Online Access Strip -->
+    <div class="verification-bar">
+      <span><i class="fa-solid fa-shield-halved mr-1"></i> Direct Verification & Full Interactive Portfolio:</span>
+      <span><a href="https://alberttandersen.github.io/" target="_blank">alberttandersen.github.io</a></span>
+      <span>•</span>
+      <span>Tel / WhatsApp: +62 813-1704-5100</span>
+    </div>
+
+    <!-- PAGE 2 FOOTER -->
+    <footer class="page-footer">
+      <div class="footer-left">
+        <span>Albert Andersen</span>
+        <span class="footer-divider">•</span>
+        <span>Academy Application Portfolio</span>
+        <span class="footer-divider">•</span>
+        <span>Google IT Support & ITIL 4 Certified</span>
+      </div>
+      <div class="footer-right">
+        Page 2 of 2
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>
